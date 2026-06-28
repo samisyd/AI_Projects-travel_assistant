@@ -21,4 +21,4 @@ jobs:
         env:          
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         # Replace 'your-username' and 'your-space-name' with your real Hugging Face details        
-        run: git push --force https://saminasyd76:$HF_TOKEN@huggingface.co/spaces/saminasyd76/travelwise-agent main
+        run: git push --force https://HF_TOKEN:$HF_TOKEN@huggingface.co/spaces/saminasyd76/travelwise-agent main
