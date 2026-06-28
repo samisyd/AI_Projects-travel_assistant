@@ -33,6 +33,6 @@ jobs:
               folder_path='.',
               repo_id='saminasyd76/travelwise-agent',
               repo_type='space',
-              delete_pattern='*'
+              delete_patterns='*'
           )
           "
