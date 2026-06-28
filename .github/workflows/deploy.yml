@@ -2,9 +2,7 @@ name: Sync to Hugging Face Spaces
 
 on:
   push:
-    branches: [main] # Triggers the workflow every time you push to the 'main' branch
-
-  # Allows you to manually run this workflow from the GitHub Actions tab
+    branches: [main]
   workflow_dispatch:
 
 jobs:
@@ -18,7 +16,6 @@ jobs:
           lfs: true
 
       - name: Push to Hugging Face
-        env:          
+        env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        # Replace 'your-username' and 'your-space-name' with your real Hugging Face details        
-        run: git push --force https://HF_TOKEN:$HF_TOKEN@huggingface.co/spaces/saminasyd76/travelwise-agent main
+        run: git push --force https://HF_TOKEN:$HF_TOKEN@huggingface.co/spaces/saminasyd76/travelwise-agent main:main
