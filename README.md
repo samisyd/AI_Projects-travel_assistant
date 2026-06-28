@@ -1,3 +1,13 @@
+---
+title: Travelwise Agent
+emoji: ✈️
+colorFrom: blue
+colorTo: green
+sdk: docker
+app_file: server.py
+pinned: false
+---
+
 # TravelWise AI Agent — Travel_Task1
 
 This folder contains the TravelWise travel assistant demo built with Google ADK, FastAPI, and a simple browser chat interface.
