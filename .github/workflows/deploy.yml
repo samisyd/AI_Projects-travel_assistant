@@ -18,4 +18,6 @@ jobs:
       - name: Push to Hugging Face
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: git push --force https://HF_TOKEN:$HF_TOKEN@huggingface.co/spaces/saminasyd76/travelwise-agent main:main
+        run: |
+          git config --global credential.helper ""
+          git push --force https://saminasyd76:$HF_TOKEN@huggingface.co/spaces/saminasyd76/travelwise-agent main:main
