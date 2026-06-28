@@ -1,0 +1,9 @@
+google-adk[extensions]
+python-dotenv
+fastapi
+uvicorn
+google-adk
+google-genai
+python-dotenv
+opentelemetry-api
+opentelemetry-sdk
