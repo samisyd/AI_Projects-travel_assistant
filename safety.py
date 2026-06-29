@@ -57,7 +57,7 @@ def output_filter(response: str) -> tuple:
 # ==================== RATE LIMITING ====================
 # Global in-memory storage - persists for the lifetime of the server
 _REQUEST_COUNTS = {}
-MAX_REQUESTS = 2
+MAX_REQUESTS = 5
 WINDOW_SECONDS = 60
 
 

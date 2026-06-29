@@ -4,24 +4,26 @@
 import os
 
 from google.adk.agents import LlmAgent
-# from google.adk.models.lite_llm import LiteLlm
-
-# model = LiteLlm(
-#     model="openai/gemini-2.5-flash",
-#     api_key="sk-adk-lab-123",
-#     api_base="http://localhost:4000"
-# )
-
+from google.adk.models.lite_llm import LiteLlm
 
 from dotenv import load_dotenv
 
 # Load environment variables
 load_dotenv()
-API_KEY = os.getenv("GOOGLE_API_KEY")
+API_KEY = os.getenv("OPENAI_API_KEY")
+
+
+# 2. Configure LiteLlm to use OpenAI instead of the local proxy/Gemini setup
+model = LiteLlm(
+    model="openai/gpt-4o",  # You can use "openai/gpt-4o" or "openai/gpt-4o-mini"
+    api_key=API_KEY
+    # Notice we removed api_base since we want to hit OpenAI's official production servers directly
+)
+
 
 hotel_expert = LlmAgent(
     name="hotel_expert",
-    model="gemini-2.5-flash",
+    model=model,
     instruction="""You are a hotel expert for TravelWise.
 
 You focus ONLY on accommodation:

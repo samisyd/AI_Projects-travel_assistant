@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 # Load environment variables FIRST before importing ADK modules
 load_dotenv()
 API_KEY = os.getenv("GOOGLE_API_KEY")
+from google.adk.models.lite_llm import LiteLlm
 
 from google.adk.agents import LlmAgent
 from google.adk.artifacts import InMemoryArtifactService
@@ -69,10 +70,22 @@ def safety_check(user_message: str, session_id: str = "default") -> str:
     return f"ALLOWED: {rate_msg}"
 
 
+# Load environment variables
+load_dotenv()
+API_KEY = os.getenv("OPENAI_API_KEY")
+
+
+# 2. Configure LiteLlm to use OpenAI instead of the local proxy/Gemini setup
+model = LiteLlm(
+    model="openai/gpt-4o",  # You can use "openai/gpt-4o" or "openai/gpt-4o-mini"
+    api_key=API_KEY
+    # Notice we removed api_base since we want to hit OpenAI's official production servers directly
+)
+
 # Complete coordinator with all patterns available
 root_agent = LlmAgent(
     name="travel_coordinator",
-    model="gemini-3.5-flash",
+    model=model,
     instruction="""You are a helpful travel assistant and Coordinator for TravelWise.    
 
 You must check the safety of all user requests and responses using the safety_check tool.
